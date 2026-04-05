@@ -1,0 +1,98 @@
+:root {
+    --accent: #ff85a1;
+    --accent-purple: #ce93d8;
+    --accent-unit: rgba(255, 133, 161, 0.6);
+    --glass: rgba(255, 255, 255, 0.45);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+    /* Mặc định load hình 1, nhớ đặt file hinhnen1.jpg cùng thư mục */
+    background: url('hinhnen1.jpg') no-repeat center center fixed;
+    background-size: cover;
+    transition: background 0.5s ease;
+}
+
+/* THANH CHỌN HÌNH NỀN - FIX LỖI VỊ TRÍ */
+.wallpaper-selector {
+    position: absolute;
+    top: 25px; /* Giảm một chút cho đẹp */
+    left: 50%; /* Chỉnh ra giữa màn hình */
+    transform: translateX(-50%); /* Căn chính xác giữa */
+    display: flex;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.6); /* Nền trắng mờ nhẹ */
+    padding: 8px 18px;
+    border-radius: 30px;
+    backdrop-filter: blur(10px); /* Hiệu ứng kính cho thanh chọn */
+    z-index: 100; /* Nằm trên app chính */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.wp-btn {
+    width: 32px; height: 32px;
+    border-radius: 50%; border: 2px solid white;
+    cursor: pointer; font-weight: bold; color: white;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+.wp-btn:hover { transform: scale(1.15); }
+
+/* Container App */
+.app-container {
+    background: var(--glass);
+    backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+    padding: 30px; border-radius: 35px; width: 90%; max-width: 500px;
+    text-align: center; border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+/* Typography & Display */
+.gradient-text { font-size: 1.8rem; font-weight: 800; background: linear-gradient(45deg, #ff85a1, #ce93d8);background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.display-main { font-size: 3.5rem; font-weight: 800; color: var(--accent); padding: 20px; margin: 15px 0; background: rgba(255,255,255,0.4); border-radius: 25px; }
+.sub-info { font-weight: 700; color: #666; margin-top: 5px; }
+
+/* Menu Tabs */
+.nav-menu { display: flex; background: rgba(0,0,0,0.05); padding: 5px; border-radius: 20px; margin-bottom: 20px; }
+.tab-btn { flex: 1; border: none; background: none; padding: 10px; font-weight: 700; cursor: pointer; color: #777; font-family: inherit; transition: 0.3s; }
+.tab-btn.active { color: var(--accent); background: white; border-radius: 15px; box-shadow: 0 3px 10px rgba(0,0,0,0.05); }
+
+/* Đếm Ngày - Nâng cấp giao diện nổi khối */
+.date-input {
+    width: 100%; padding: 12px; border-radius: 15px; border: 2px solid white;
+    background: rgba(255,255,255,0.7); color: var(--accent); font-weight: 700;
+    text-align: center; font-family: inherit; margin-bottom: 20px; outline: none;
+}
+.count-card {
+    background: white; padding: 25px; border-radius: 30px;
+    box-shadow: inset 5px 5px 15px rgba(0,0,0,0.03), 10px 10px 25px rgba(255,255,255,0.8);
+    display: flex; justify-content: center; align-items: baseline; gap: 8px; margin: 10px 0;
+}
+#day-result { font-size: 4.5rem; font-weight: 800; color: var(--accent); line-height: 1; }
+.unit { font-size: 1.5rem; font-weight: 700; color: var(--accent-unit); }
+
+/* Hẹn Giờ */
+.timer-input-group { display: flex; justify-content: center; gap: 15px; margin: 20px 0; }
+.input-item input { width: 75px; height: 58px; border-radius: 18px; border: 2px solid white; text-align: center; font-size: 1.6rem; font-weight: 800; color: var(--accent); outline: none; }
+
+/* Button & Tabs system */
+.action-btn { padding: 12px 25px; border: none; border-radius: 15px; font-weight: 800; cursor: pointer; transition: 0.3s; }
+.start { background: var(--accent); color: white; }
+.reset { background: #eee; color: #777; }
+.tab-content { display: none; }
+.tab-content.active { display: block; animation: fadeIn 0.4s; }
+
+/* Responsive di động */
+@media (max-width: 600px) {
+    .display-main { font-size: 2.5rem; }
+    .wallpaper-selector { width: 90%; justify-content: center; }
+}
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }

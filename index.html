@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Hello Kitty Time - Pastel Clock</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌸</text></svg>">
+</head>
+<body id="main-body">
+    
+    <div class="wallpaper-selector">
+        <button class="wp-btn" onclick="changeBG('hinhnen1.jpg')" style="background: #ffb6c1;">1</button>
+        <button class="wp-btn" onclick="changeBG('hinhnen2.jpg')" style="background: #add8e6;">2</button>
+        <button class="wp-btn" onclick="changeBG('hinhnen3.jpg')" style="background: #98fb98;">3</button>
+        <button class="wp-btn" onclick="changeBG('hinhnen4.jpg')" style="background: #fff59d;">4</button>
+        <button class="wp-btn" onclick="changeBG('hinhnen5.jpg')" style="background: #f48fb1;">5</button>
+    </div>
+
+    <div class="app-container">
+        <div class="nav-menu">
+            <button class="tab-btn active" onclick="openTab(event, 'clock')">🕒 Giờ</button>
+            <button class="tab-btn" onclick="openTab(event, 'timer')">⏳ Hẹn giờ</button>
+            <button class="tab-btn" onclick="openTab(event, 'date-calc')">📅 Đếm ngày</button>
+        </div>
+
+        <div id="clock" class="tab-content active">
+            <div class="header-wrapper">
+                <h2 id="greeting" class="gradient-text">Chào buổi sáng!</h2>
+                <span class="header-icon cherry">🌸</span>
+            </div>
+            <div class="display-main" id="current-time">00:00:00</div>
+            <p id="full-date" class="sub-info">...</p>
+        </div>
+
+        <div id="timer" class="tab-content">
+            <div class="header-wrapper">
+                <h2 class="gradient-text">Hẹn giờ</h2>
+                <span class="header-icon cherry">⌛</span>
+            </div>
+            <div id="timer-inputs" class="timer-input-group">
+                <div class="input-item">
+                    <input type="number" id="minutes" placeholder="00" min="0">
+                    <span>Phút</span>
+                </div>
+                <div class="input-item">
+                    <input type="number" id="seconds" placeholder="00" min="0" max="59">
+                    <span>Giây</span>
+                </div>
+            </div>
+            <div class="display-main" id="timer-display" style="display: none;">00:00</div>
+            <div class="btn-group">
+                <button onclick="startTimer()" class="action-btn start">Bắt đầu</button>
+                <button onclick="resetTimer()" class="action-btn reset">Làm mới</button>
+            </div>
+        </div>
+
+        <div id="date-calc" class="tab-content">
+            <div class="header-wrapper">
+                <h2 class="gradient-text">Đếm ngày</h2>
+                <span class="header-icon cherry">📅</span>
+            </div>
+            <input type="date" id="special-date" onchange="countDays()" class="date-input">
+            <div class="count-card">
+                <span id="day-result">0</span>
+                <span class="unit">ngày</span>
+            </div>
+            <p id="date-msg" class="sub-info">đang chờ chọn ngày... ✨</p>
+        </div>
+    </div>
+
+    <audio id="alarm-sound" src="https://www.soundjay.com/misc/sounds/bell-ringing-05.mp3" preload="auto"></audio>
+    <script src="script.js"></script>
+</body>
+</html>
